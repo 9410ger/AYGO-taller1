@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Service</title>
+</head>
+<body>
+  <div><h1>Log Service</h1></div>
+  <label for="fnlog">Log :</label><br>
+  <input type="text" id="fnlog" name="fnlog"><br>
+  <button type="submit" onClick="sendLog()">Submit</button><br>
+  <textarea id="result" name="w3review" rows="4" cols="50">
+  </textarea>
+  <script>
+    function sendLog(){
+      var textInput = document.getElementById('fnlog').value;
+      fetch("/logfacade?msg=" + textInput, {
+        method: "POST",
+      }).then(res => res.json())
+          .catch(error => console.error('Error:', error))
+          .then(response => document.getElementById("result").value = JSON.stringify(response));
+    }
+  </script>
+</body>
+</html>

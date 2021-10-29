@@ -1,0 +1,58 @@
+version: "2"
+
+services:
+  mongodb:
+    image: mongo:4.2.9-bionic
+    container_name: mongodb
+    volumes:
+      - mongodb:/data/db
+      - mongodb_config:/data/configdb
+    ports:
+      - 27017:27017
+    command: mongod
+    environment:
+      - MONGO_INITDB_USERNAME=usermongo
+      - MONGO_INITDB_PASSWORD=userpwd
+      - MONGO_INIT_DATABASE=exampledb
+  dockercontainer1:
+    image: 9410ger/logservice
+    container_name: dockercontainer1
+    environment:
+      - PORT=6000
+    ports:
+      - "4567:6000"
+    depends_on:
+      - mongodb
+  dockercontainer2:
+    image: 9410ger/logservice
+    container_name: dockercontainer2
+    environment:
+      - PORT=6000
+    ports:
+      - "4568:6000"
+    depends_on:
+      - mongodb
+  dockercontainer3:
+    image: 9410ger/logservice
+    container_name: dockercontainer3
+    environment:
+      - PORT=6000
+    ports:
+      - "4569:6000"
+    depends_on:
+      - mongodb
+  facadecontainer:
+    image: 9410ger/logfacadeservice
+    container_name: facadecontainer
+    environment:
+      - PORT=6000
+    ports:
+      - "4000:6000"
+    depends_on:
+      - dockercontainer1
+      - dockercontainer2
+      - dockercontainer3
+
+volumes:
+  mongodb:
+  mongodb_config:
