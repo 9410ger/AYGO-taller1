@@ -1,4 +1,7 @@
 # AYGO-taller1
+
+GERMAN ANDRES LOPEZ PACHECO
+
 1. Después de realizado los códigos de LogService y LogFacadeService, con su respectivo 
     front, se les agrega el Dockerfile para poder levantar las instancias en docker,
     para esto se genera un archivo docker-compose.yml, el cual contiene la instancia
