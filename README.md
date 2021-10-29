@@ -9,7 +9,7 @@
     proyectos para poder acceder a sus respectivos Dockerfile.
 2. Cuando se ejecuta el docker-compose up -d, se levantan las instancias como se muestra en la imagen
 
-![ScreenShot](images/docker-compose en local.png)
+![ScreenShot](images/docker-compose_en_local.png)
 
 3. Después de probado el app en local, se crean los repositorios en docker hub
    que van a contener el LogService y el LogFacadeService respectivamente.
